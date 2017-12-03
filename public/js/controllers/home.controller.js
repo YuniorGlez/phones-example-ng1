@@ -9,6 +9,8 @@
 
     function HomeController($scope, PhonesFactory) {
         $scope.phones = []
+        $scope.callToGet = callToGet;
+
 
         activate();
 
@@ -19,8 +21,15 @@
         }
 
 
-        function loadPhones() {
+        function callToGet(id) {
+            PhonesFactory.get(id)
+                .then(phone => console.log(phone))
+                .catch(e => {
+                    console.error('There was some error in callToGet, ', e);
+                })
+        }
 
+        function loadPhones() {
             PhonesFactory.getAll()
                 .then(phones => {
                     $scope.phones = phones;

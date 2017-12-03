@@ -9,7 +9,8 @@
     function PhonesFactory($http) {
         var phonesUrl = 'http://localhost:3333/api/phones';
         var service = {
-            getAll:getAll
+            getAll:getAll,
+            get:get
         };
         
         return service;
@@ -19,5 +20,11 @@
             return $http.get(phonesUrl)
                 .then(response => response.data)
         }
+
+        function get(id){
+            return $http.get(phonesUrl + '/' + id)
+                .then(response => response.data)
+        }
+
     }
 })();
