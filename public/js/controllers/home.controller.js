@@ -5,17 +5,29 @@
         .module('EOI')
         .controller('HomeController', HomeController);
 
-    HomeController.$inject = ['$scope'];
+    HomeController.$inject = ['$scope', 'PhonesFactory'];
 
-    function HomeController($scope) {
-        $scope.phones= [ {name : 'Fake 1', price : '100€'}, {name : 'Fake 2', price : '150€'}]
+    function HomeController($scope, PhonesFactory) {
+        $scope.phones = []
 
         activate();
 
         ////////////////
 
         function activate() {
-            console.log('Hi from the HomeController activate function');
+            loadPhones();
+        }
+
+
+        function loadPhones() {
+
+            PhonesFactory.getAll()
+                .then(phones => {
+                    $scope.phones = phones;
+                })
+                .catch(e => {
+                    console.error('There was some error in loadPhones, ', e);
+                })
         }
     }
 })();
