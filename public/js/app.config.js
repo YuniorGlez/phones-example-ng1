@@ -15,8 +15,16 @@
             })
             .when('/phone/:id', {
                 controller: 'PhoneController',
-                templateUrl: '/views/phone.html'
+                templateUrl: '/views/phone.html',
+                resolve : {
+                    Phone : phonesPrepFactory
+                }
             })
 
+    }
+
+    phonesPrepFactory.$inject = ['PhonesFactory', '$route']
+    function phonesPrepFactory(PhonesFactory, $route){
+        return PhonesFactory.getSlow($route.current.params.id);
     }
 })();

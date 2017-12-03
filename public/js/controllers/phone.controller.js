@@ -1,29 +1,22 @@
-(function() {
+(function () {
     'use strict';
 
     angular
         .module('EOI')
         .controller('PhoneController', PhoneController);
 
-    PhoneController.$inject = ['$scope', '$routeParams', 'PhonesFactory'];
-    function PhoneController($scope,$routeParams,  PhonesFactory) {
+    PhoneController.$inject = ['$scope', '$routeParams', 'Phone'];
+
+    function PhoneController($scope, $routeParams, Phone) {
         $scope.phone = {};
 
         activate();
 
         ////////////////
 
-        function activate() { 
-            loadPhone($routeParams.id);   
+        function activate() {
+            $scope.phone = Phone;
         }
 
-        function loadPhone(id){
-
-            PhonesFactory.get(id)
-                .then(phone => $scope.phone = phone)
-                .catch(e => {
-                    console.error('There was some error in loadPhone, ', e);
-                })
-        }
     }
 })();

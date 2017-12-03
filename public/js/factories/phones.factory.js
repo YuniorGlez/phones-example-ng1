@@ -10,7 +10,8 @@
         var phonesUrl = 'http://localhost:3333/api/phones';
         var service = {
             getAll:getAll,
-            get:get
+            get:get,
+            getSlow:getSlow
         };
         
         return service;
@@ -23,6 +24,11 @@
 
         function get(id){
             return $http.get(phonesUrl + '/' + id)
+                .then(response => response.data)
+        }
+
+        function getSlow(id){
+            return $http.get(phonesUrl + '/' + id + '?slow=true')
                 .then(response => response.data)
         }
 
