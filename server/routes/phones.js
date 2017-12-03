@@ -5,12 +5,12 @@ var router = express.Router();
 
 /* GET all books and POST new books */
 router.route('/')
-    .get(function(req, res) {
+    .get(function (req, res) {
         var data = getPhonesData();
         res.send(data);
     })
 
-    .post(function(req, res) {
+    .post(function (req, res) {
 
         var data = getPhonesData();
         var id = getNextAvailableID(data);
@@ -28,7 +28,7 @@ router.route('/')
 
         savePhonesData(data);
 
-//        res.set('Content-Type', 'application/json');
+        //        res.set('Content-Type', 'application/json');
         res.status(201).send(newPhone);
     });
 
@@ -36,28 +36,35 @@ router.route('/')
 /* GET, PUT and DELETE individual books */
 router.route('/:id')
 
-    .get(function(req, res) {
+    .get(function (req, res) {
 
         //console.log('Retrieving book id: ' + req.params.id);
 
         var data = getPhonesData();
 
-        var matchingPhones = data.filter(function(phone) {
+        var matchingPhones = data.filter(function (phone) {
             return phone.id == req.params.id;
         });
 
-        if(matchingPhones.length === 0) {
+        if (matchingPhones.length === 0) {
             res.sendStatus(404);
         } else {
-            res.send(matchingPhones[0]);
+            if (req.query.slow) {
+
+                setTimeout(() => {
+                    res.send(matchingPhones[0]);
+                }, 2000);
+            } else {
+                res.send(matchingPhones[0]);
+            }
         }
     })
 
-    .delete(function(req, res) {
+    .delete(function (req, res) {
 
         var data = getPhonesData();
 
-        var pos = data.map(function(e) {
+        var pos = data.map(function (e) {
             return e.id;
         }).indexOf(parseInt(req.params.id, 10));
 
@@ -72,15 +79,15 @@ router.route('/:id')
 
     })
 
-    .put(function(req, res) {
+    .put(function (req, res) {
 
         var data = getPhonesData();
 
-        var matchingPhones = data.filter(function(phone) {
+        var matchingPhones = data.filter(function (phone) {
             return phone.id == req.params.id;
         });
 
-        if(matchingPhones.length === 0) {
+        if (matchingPhones.length === 0) {
             res.sendStatus(404);
         } else {
             var phoneToUpdate = matchingPhones[0];
@@ -96,10 +103,10 @@ router.route('/:id')
 
 function getNextAvailableID(allBooks) {
     var maxID = 0;
-    allBooks.forEach(function(element, index, array) {
-        if(element.id > maxID) maxID = element.id;
+    allBooks.forEach(function (element, index, array) {
+        if (element.id > maxID) maxID = element.id;
     });
-    return (maxID+1);
+    return (maxID + 1);
 }
 
 function getPhonesData() {
