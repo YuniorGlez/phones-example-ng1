@@ -1,4 +1,3 @@
-
 <div class="nav-bar">
 
     <ul>
@@ -12,10 +11,16 @@
 
     <ul class="phone-list">
         <li class="phone-container" ng-repeat="phone in phones">
-            <p><b>Name: </b> {{phone.name}}</p>
-            <p><b>Price: </b> {{phone.price}}</p>
-            <button ng-click="callToGet(phone.id)">Get data</button>
+            <a href="#!/phone/{{phone.id}}">
+
+                <p>
+                    <b>Name: </b> {{phone.name}}</p>
+                <p>
+                    <b>Price: </b> {{phone.price}}</p>
+            </a>
         </li>
     </ul>
+
+    
 
 </main>
