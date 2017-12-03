@@ -1,1 +1,20 @@
-<h2>{{title}}</h2>
+
+<div class="nav-bar">
+
+    <ul>
+        <li>Phone Market</li>
+        <li>Lista de deseados</li>
+        <input ng-model="search" type="text" placeholder="Buscar ...">
+    </ul>
+</div>
+
+<main>
+
+    <ul class="phone-list">
+        <li class="phone-container" ng-repeat="phone in phones">
+            <p><b>Name: </b> {{phone.name}}</p>
+            <p><b>Price: </b> {{phone.price}}</p>
+        </li>
+    </ul>
+
+</main>

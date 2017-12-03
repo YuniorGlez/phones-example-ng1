@@ -8,7 +8,7 @@
     HomeController.$inject = ['$scope'];
 
     function HomeController($scope) {
-        $scope.title = 'Welcome to the Home Page';
+        $scope.phones= [ {name : 'Fake 1', price : '100€'}, {name : 'Fake 2', price : '150€'}]
 
         activate();
 
