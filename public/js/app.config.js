@@ -18,7 +18,8 @@
                 templateUrl: '/views/phone.html',
                 resolve : {
                     Phone : phonesPrepFactory
-                }
+                },
+                controllerAs : 'phoneCtrl'
             })
 
     }

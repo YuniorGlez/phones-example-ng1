@@ -5,17 +5,18 @@
         .module('EOI')
         .controller('PhoneController', PhoneController);
 
-    PhoneController.$inject = ['$scope', '$routeParams', 'Phone'];
+    PhoneController.$inject = ['Phone'];
 
-    function PhoneController($scope, $routeParams, Phone) {
-        $scope.phone = {};
+    function PhoneController(Phone) {
+        var vm = this;
+        vm.phone = {};
 
         activate();
 
         ////////////////
 
         function activate() {
-            $scope.phone = Phone;
+            vm.phone = Phone;
         }
 
     }
