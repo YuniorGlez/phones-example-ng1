@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "iPhone 7",
+        "price" : "150€",
+        "img" : "",
+        "ram" : "",
+        "cpu" : ""
+    },
+    {
+        "id": 2,
+        "name": "iPhone 8",
+        "price" : "250€",
+        "img" : "",
+        "ram" : "",
+        "cpu" : ""
+    },
+    {
+        "id": 3,
+        "name": "iPhone X",
+        "price" : "350€",
+        "img" : "",
+        "ram" : "",
+        "cpu" : ""
+    }
+]
