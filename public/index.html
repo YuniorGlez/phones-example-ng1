@@ -1,26 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="EOI">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Phones Market</title>
-    <link rel="stylesheet" href="libs/angular-csp.css">
-    
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="text/html" href="libs/angular-csp.css">
+
+    <link rel="text/html" href="css/style.css">
 
 </head>
+
 <body>
-    
-
-    <h1>Hello</h1>
-
-    
 
 
+    <h1>This is the root container</h1>
+
+    <div class="container">
+        <div class="ng-view"></div>
+    </div>
 
 
+
+    <!-- Third Party libraries -->
     <script src="libs/angular.js"></script>
     <script src="libs/angular-route.js"></script>
+
+    <!-- App config -->
+    <script src="js/app.config.js"></script>
+
+    <!-- Services and factories  -->
+
+    <!-- Controllers -->
+    <script src="js/controllers/home.controller.js"></script>
+
 </body>
+
 </html>
