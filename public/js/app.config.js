@@ -16,16 +16,9 @@
             .when('/phone/:id', {
                 controller: 'PhoneController',
                 templateUrl: '/views/phone.html',
-                resolve : {
-                    Phone : phonesPrepFactory
-                },
                 controllerAs : 'phoneCtrl'
             })
 
     }
 
-    phonesPrepFactory.$inject = ['PhonesFactory', '$route']
-    function phonesPrepFactory(PhonesFactory, $route){
-        return PhonesFactory.getSlow($route.current.params.id);
-    }
 })();
